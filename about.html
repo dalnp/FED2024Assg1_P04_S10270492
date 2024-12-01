@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Yorushika - Home</title>
+    <title>Yorushika - About</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
@@ -47,50 +47,50 @@
             color: #6b8e23;
         }
 
-        .hero {
-            height: 100vh;
+        .about-hero {
+            height: 70vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             background-color: #e8f5e9;
-            position: relative;
-            overflow: hidden;
+            padding: 2rem;
+            margin-top: 60px;
         }
 
-        .hero::after {
-            content: "↓";
-            position: absolute;
-            bottom: 2rem;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-30px);
-            }
-            60% {
-                transform: translateY(-15px);
-            }
-        }
-
-        .featured-section {
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 4rem 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .discography {
             background: #fff;
+            padding: 4rem 2rem;
         }
 
-        .latest-release {
-            padding: 4rem 2rem;
-            background: #f3e5f5;
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .album-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
         }
 
         h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
+            text-align: center;
             opacity: 0;
             transform: translateY(50px);
         }
@@ -101,46 +101,19 @@
             text-align: center;
         }
 
-        .song-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .song-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transform: translateY(50px);
-            opacity: 0;
-        }
-
         .placeholder-img {
             width: 100%;
-            aspect-ratio: 16/9;
+            aspect-ratio: 1/1;
             background-color: #ddd;
             border-radius: 8px;
             overflow: hidden;
+            margin-bottom: 1rem;
         }
 
         .placeholder-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .latest-release {
-            text-align: center;
-        }
-
-        .latest-album {
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
         }
 
         footer {
@@ -160,48 +133,40 @@
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>Yorushika</h1>
-        <div class="placeholder-img">
-            <img src="/api/placeholder/800/450" alt="Yorushika Hero" />
-        </div>
+    <section class="about-hero">
+        <h1>About Yorushika</h1>
     </section>
 
-    <section class="featured-section">
-        <h2>Featured Songs</h2>
-        <div class="song-grid">
-            <div class="song-card">
-                <div class="placeholder-img">
-                    <img src="/api/placeholder/300/300" alt="Song 1" />
+    <section class="about-content">
+        <p>Yorushika is a Japanese music duo consisting of n-buna (composer) and suis (vocalist). The project began in 2017, quickly gaining recognition for their unique blend of rock and electronic elements with powerful vocals and meaningful lyrics.</p>
+        <br>
+        <p>Their music often explores themes of youth, memories, and the passing of time, resonating deeply with listeners through storytelling and emotional depth.</p>
+    </section>
+
+    <section class="discography">
+        <h2>Discography</h2>
+        <div class="album-grid">
+            <div class="album-card">
+                <div class="gaveupmusic.jpg"
+                    <img src="gaveupmusic.jpg" alt="Album 1" />
                 </div>
                 <h3>だから僕は音楽を辞めた</h3>
-                <p>Album: That's Why I Gave Up on Music</p>
+                <p>Release: 2019</p>
             </div>
-            <div class="song-card">
+            <div class="album-card">
                 <div class="placeholder-img">
-                    <img src="/api/placeholder/300/300" alt="Song 2" />
+                    <img src="/api/placeholder/300/300" alt="Album 2" />
                 </div>
                 <h3>エルマ</h3>
-                <p>Album: Elma</p>
+                <p>Release: 2019</p>
             </div>
-            <div class="song-card">
+            <div class="album-card">
                 <div class="placeholder-img">
-                    <img src="/api/placeholder/300/300" alt="Song 3" />
+                    <img src="/api/placeholder/300/300" alt="Album 3" />
                 </div>
                 <h3>盗作</h3>
-                <p>Album: Plagiarism</p>
+                <p>Release: 2020</p>
             </div>
-        </div>
-    </section>
-
-    <section class="latest-release">
-        <h2>Latest Release</h2>
-        <div class="latest-album">
-            <div class="placeholder-img">
-                <img src="/api/placeholder/800/450" alt="Latest Album" />
-            </div>
-            <h3>New Album Title</h3>
-            <p>Release Date: 2024</p>
         </div>
     </section>
 
@@ -212,7 +177,7 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero animations
+        // Hero animation
         gsap.to("h1", {
             opacity: 1,
             y: 0,
@@ -220,26 +185,26 @@
             delay: 0.5
         });
 
-        // Song card animations
-        gsap.to(".song-card", {
+        // About content animation
+        gsap.to(".about-content", {
             opacity: 1,
             y: 0,
             duration: 1,
-            stagger: 0.2,
             scrollTrigger: {
-                trigger: ".song-grid",
+                trigger: ".about-content",
                 start: "top center+=100",
                 toggleActions: "play none none reverse"
             }
         });
 
-        // Latest album animation
-        gsap.to(".latest-album", {
+        // Album card animations
+        gsap.to(".album-card", {
             opacity: 1,
             y: 0,
             duration: 1,
+            stagger: 0.2,
             scrollTrigger: {
-                trigger: ".latest-album",
+                trigger: ".album-grid",
                 start: "top center+=100",
                 toggleActions: "play none none reverse"
             }

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Yorushika - Live Shows</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #6b8e23;
+        }
+
+        .live-hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3e5f5;
+            padding: 2rem;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .upcoming-shows {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .show-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .show-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 0.3s;
+        }
+
+        .show-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .past-shows {
+            background: #e8f5e9;
+            padding: 4rem 2rem;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #6b8e23;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(50px);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: calc(50% - 30px);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .placeholder-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tour-info {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .ticket-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #6b8e23;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .ticket-btn:hover {
+            background: #556b2f;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="live.html">Live Shows</a></li>
+        </ul>
+    </nav>
+
+    <section class="live-hero">
+        <div class="hero-content">
+            <h1>Live Shows</h1>
+            <div class="tour-info">
+                <h3>2024 World Tour</h3>
+                <p>Join us for an unforgettable experience</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="upcoming-shows">
+        <h2>Upcoming Shows</h2>
+        <div class="show-grid">
+            <div class="show-card">
+                <div class="placeholder-img">
+                    <img src="/api/placeholder/400/225" alt="Tokyo Venue" />
+                </div>
+                <h3>Tokyo Show</h3>
+                <p>Date: April 15, 2024</p>
+                <p>Venue: Nippon Budokan</p>
+                <a href="#" class="ticket-btn">Get Tickets</a>
+            </div>
+            <div class="show-card">
+                <div class="placeholder-img">
+                    <img src="/api/placeholder/400/225" alt="Osaka Venue" />
+                </div>
+                <h3>Osaka Show</h3>
+                <p>Date: April 22, 2024</p>
+                <p>Venue: Osaka-jo Hall</p>
+                <a href="#" class="ticket-btn">Get Tickets</a>
+            </div>
+            <div class="show-card">
+                <div class="placeholder-img">
+                    <img src="/api/placeholder/400/225" alt="Nagoya Venue" />
+                </div>
+                <h3>Nagoya Show</h3>
+                <p>Date: April 29, 2024</p>
+                <p>Venue: Nagoya Congress Center</p>
+                <a href="#" class="ticket-btn">Get Tickets</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="past-shows">
+        <h2>Past Shows</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Winter Tour 2023</h3>
+                    <p>A spectacular winter performance across Japan</p>
+                    <div class="placeholder-img">
+                        <img src="/api/placeholder/400/225" alt="Winter Tour" />
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Summer Festival 2023</h3>
+                    <p>Special appearance at major summer festivals</p>
+                    <div class="placeholder-img">
+                        <img src="/api/placeholder/400/225" alt="Summer Festival" />
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Spring Tour 2023</h3>
+                    <p>Nationwide tour celebrating new album release</p>
+                    <div class="placeholder-img">
+                        <img src="/api/placeholder/400/225" alt="Spring Tour" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Yorushika Fan Page</p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animations
+        gsap.to("h1", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.5
+        });
+
+        gsap.to(".tour-info", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.7
+        });
+
+        // Show card animations
+        gsap.to(".show-card", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".show-grid",
+                start: "top center+=100",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Timeline animations
+        gsap.to(".timeline-item", {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            stagger: 0.3,
+            scrollTrigger: {
+                trigger: ".timeline",
+                start: "top center+=100",
+                toggleActions: "play none none reverse"
+            }
+        });
+    </script>
+</body>
+</html>
